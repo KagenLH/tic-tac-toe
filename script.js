@@ -152,16 +152,16 @@ function generateAiSquare() {
 
 function didPlayerWin(player) {
     // Horizontal win conditions
-    if(document.querySelector('#tile-1').innerText == player && document.querySelector('#tile-2').innerText == player && document.querySelector('#tile-3').innerText == player) return true;
-    if(document.querySelector('#tile-4').innerText == player && document.querySelector('#tile-5').innerText == player && document.querySelector('#tile-6').innerText == player) return true;
-    if(document.querySelector('#tile-7').innerText == player && document.querySelector('#tile-8').innerText == player && document.querySelector('#tile-9').innerText == player) return true;
+    if(tiles[0].innerText == player && tiles[1].innerText == player && tiles[2].innerText == player) return true;
+    if(tiles[3].innerText == player && tiles[4].innerText == player && tiles[5].innerText == player) return true;
+    if(tiles[6].innerText == player && tiles[7].innerText == player && tiles[8].innerText == player) return true;
     // Vertical win conditions
-    if(document.querySelector('#tile-1').innerText == player && document.querySelector('#tile-4').innerText == player && document.querySelector('#tile-7').innerText == player) return true;
-    if(document.querySelector('#tile-2').innerText == player && document.querySelector('#tile-5').innerText == player && document.querySelector('#tile-8').innerText == player) return true;
-    if(document.querySelector('#tile-3').innerText == player && document.querySelector('#tile-6').innerText == player && document.querySelector('#tile-9').innerText == player) return true;
+    if(tiles[0].innerText == player && tiles[3].innerText == player && tiles[6].innerText == player) return true;
+    if(tiles[1].innerText == player && tiles[4].innerText == player && tiles[7].innerText == player) return true;
+    if(tiles[2].innerText == player && tiles[5].innerText == player && tiles[8].innerText == player) return true;
     // Diagonal win conditions
-    if(document.querySelector('#tile-1').innerText == player && document.querySelector('#tile-5').innerText == player && document.querySelector('#tile-9').innerText == player) return true;
-    if(document.querySelector('#tile-3').innerText == player && document.querySelector('#tile-5').innerText == player && document.querySelector('#tile-7').innerText == player) return true;
+    if(tiles[0].innerText == player && tiles[4].innerText == player && tiles[8].innerText == player) return true;
+    if(tiles[2].innerText == player && tiles[4].innerText == player && tiles[6].innerText == player) return true;
     // No win condition is met
     return false;
 }
