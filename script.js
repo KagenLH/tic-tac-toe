@@ -1,11 +1,140 @@
 const player_dialogue = document.querySelector('#player_dialogue');
 const tiles = Array.from(document.querySelectorAll(".tile"));
 
+function aiPlayMove() {
+    // Checking for plays to make for immediate wins
+    // Tile 1 Win Check
+    if(tiles[0].innerText == "") {
+        if(tiles[1].innerText == 'O' && tiles[2].innerText == 'O') return 1;
+        if(tiles[3].innerText == 'O' && tiles[6].innerText == 'O') return 1;
+        if(tiles[4].innerText == 'O' && tiles[8].innerText == 'O') return 1;
+    }
+
+    // Tile 2 Win Check
+    if(tiles[1].innerText == "") {
+        if(tiles[0].innerText == 'O' && tiles[2].innerText == 'O') return 2;
+        if(tiles[4].innerText == 'O' && tiles[7].innerText == 'O') return 2;
+    }
+
+    // Tile 3 Win Check
+    if(tiles[2].innerText == "") {
+        if(tiles[0].innerText == 'O' && tiles[1].innerText == 'O') return 3;
+        if(tiles[5].innerText == 'O' && tiles[8].innerText == 'O') return 3;
+        if(tiles[4].innerText == 'O' && tiles[6].innerText == 'O') return 3;
+    }
+
+    //Tile 4 Win Check
+    if(tiles[3].innerText == "") {
+        if(tiles[0].innerText == 'O' && tiles[6].innerText == 'O') return 4;
+        if(tiles[4].innerText == 'O' && tiles[5].innerText == 'O') return 4;
+    }
+
+    //Tile 5 Win Check
+    if(tiles[4].innerText == "") {
+        if(tiles[0].innerText == 'O' && tiles[8].innerText == 'O') return 5;
+        if(tiles[2].innerText == 'O' && tiles[6].innerText == 'O') return 5;
+        if(tiles[1].innerText == 'O' && tiles[7].innerText == 'O') return 5;
+        if(tiles[3].innerText == 'O' && tiles[5].innerText == 'O') return 5;
+    }
+    //Tile 6 Win Check
+    if(tiles[5].innerText == "") {
+        if(tiles[3].innerText == 'O' && tiles[4].innerText == 'O') return 6;
+        if(tiles[2].innerText == 'O' && tiles[8].innerText == 'O') return 6;
+    }
+
+    //Tile 7 Win Check
+    if(tiles[6].innerText == "") {
+        if(tiles[0].innerText == 'O' && tiles[3].innerText == 'O') return 7;
+        if(tiles[2].innerText == 'O' && tiles[4].innerText == 'O') return 7;
+        if(tiles[7].innerText == 'O' && tiles[8].innerText == 'O') return 7;
+    }
+
+    //Tile 8 Win Check
+    if(tiles[7].innerText == "") {
+        if(tiles[6].innerText == 'O' && tiles[8].innerText == 'O') return 8;
+        if(tiles[1].innerText == 'O' && tiles[4].innerText == 'O') return 8;
+    }
+
+    //Tile 9 Win Check
+    if(tiles[8].innerText == "") {
+        if(tiles[0].innerText == 'O' && tiles[4].innerText == '0') return 9;
+        if(tiles[6].innerText == 'O' && tiles[7].innerText == 'O') return 9;
+        if(tiles[2].innerText == 'O' && tiles[5].innerText == 'O') return 9;
+    }
+
+
+    // Checking for plays the opponent can make next turn that would result in an immediate loss, and making that play if found.
+    // Tile 1 Loss Check
+    if(tiles[0].innerText == "") {
+        if(tiles[1].innerText == 'X' && tiles[2].innerText == 'X') return 1;
+        if(tiles[3].innerText == 'X' && tiles[6].innerText == 'X') return 1;
+        if(tiles[4].innerText == 'X' && tiles[8].innerText == 'X') return 1;
+    }
+
+    // Tile 2 Loss Check
+    if(tiles[1].innerText == "") {
+        if(tiles[0].innerText == 'X' && tiles[2].innerText == 'X') return 2;
+        if(tiles[4].innerText == 'X' && tiles[7].innerText == 'X') return 2;
+    }
+
+    // Tile 3 Loss Check
+    if(tiles[2].innerText == "") {
+        if(tiles[0].innerText == 'X' && tiles[1].innerText == 'X') return 3;
+        if(tiles[5].innerText == 'X' && tiles[8].innerText == 'X') return 3;
+        if(tiles[4].innerText == 'X' && tiles[6].innerText == 'X') return 3;
+    }
+
+    //Tile 4 Loss Check
+    if(tiles[3].innerText == "") {
+        if(tiles[0].innerText == 'X' && tiles[6].innerText == 'X') return 4;
+        if(tiles[4].innerText == 'X' && tiles[5].innerText == 'X') return 4;
+    }
+
+    //Tile 5 Loss Check
+    if(tiles[4].innerText == "") {
+        if(tiles[0].innerText == 'X' && tiles[8].innerText == 'X') return 5;
+        if(tiles[2].innerText == 'X' && tiles[6].innerText == 'X') return 5;
+        if(tiles[1].innerText == 'X' && tiles[7].innerText == 'X') return 5;
+        if(tiles[3].innerText == 'X' && tiles[5].innerText == 'X') return 5;
+    }
+    //Tile 6 Loss Check
+    if(tiles[5].innerText == "") {
+        if(tiles[3].innerText == 'X' && tiles[4].innerText == 'X') return 6;
+        if(tiles[2].innerText == 'X' && tiles[8].innerText == 'X') return 6;
+    }
+
+    //Tile 7 Loss Check
+    if(tiles[6].innerText == "") {
+        if(tiles[0].innerText == 'X' && tiles[3].innerText == 'X') return 7;
+        if(tiles[2].innerText == 'X' && tiles[4].innerText == 'X') return 7;
+        if(tiles[7].innerText == 'X' && tiles[8].innerText == 'X') return 7;
+    }
+
+    //Tile 8 Loss Check
+    if(tiles[7].innerText == "") {
+        if(tiles[6].innerText == 'X' && tiles[8].innerText == 'X') return 8;
+        if(tiles[1].innerText == 'X' && tiles[4].innerText == 'X') return 8;
+    }
+
+    //Tile 9 Loss Check
+    if(tiles[8].innerText == "") {
+        if(tiles[0].innerText == 'X' && tiles[4].innerText == 'X') return 9;
+        if(tiles[6].innerText == 'X' && tiles[7].innerText == 'X') return 9;
+        if(tiles[2].innerText == 'X' && tiles[5].innerText == 'X') return 9;
+    }
+
+    if(tiles[4].innerText == "") return 5;
+
+    // No immediate win or loss available, so just play into the next available tile.
+    for(i = 0; i < 9; i++) {
+        if(tiles[i].innerText == "") return i + 1;
+    }
+
+}
+
 function getRandomInt(max) {
     return Math.floor(Math.random() * Math.floor(max));
 }
-let my_num = 6;
-console.log(document.querySelector(`#tile-${my_num}`).innerText);
 
 function generateAiSquare() {
     let ai_square = getRandomInt(10);
@@ -61,11 +190,7 @@ function onTileClick(tile) {
         return;
     }
 
-    let ai_square = generateAiSquare();
-    console.log(ai_square);
-    ai_tile = document.querySelector(`#tile-${ai_square}`);
-    ai_tile.innerText = 'O';
-    ai_tile.removeEventListener('click', onTileClick);
+    document.querySelector(`#tile-${aiPlayMove()}`).innerText = 'O';
 
     if(didPlayerWin('O')) {
         tiles.forEach(function(board_tiles) {
@@ -76,7 +201,7 @@ function onTileClick(tile) {
     }
 
     if(boardIsFull()) {
-        player.dialogue.innerText = 'The board is full, its a draw! Refresh to play again.';
+        player_dialogue.innerText = 'The board is full, its a draw! Refresh to play again.';
         return;
     }
 
