@@ -190,7 +190,10 @@ function onTileClick(tile) {
         return;
     }
 
-    document.querySelector(`#tile-${aiPlayMove()}`).innerText = 'O';
+    let ai_move = aiPlayMove()
+    document.querySelector(`#tile-${ai_move}`).removeEventListener('click', onTileClick);
+    document.querySelector(`#tile-${ai_move}`).innerText = 'O';
+
 
     if(didPlayerWin('O')) {
         tiles.forEach(function(board_tiles) {
