@@ -1,6 +1,10 @@
 const player_dialogue = document.querySelector('#player_dialogue');
 const tiles = Array.from(document.querySelectorAll(".tile"));
 
+tiles.forEach(function(clicked_tile) {
+    clicked_tile.addEventListener('click', onTileClick);
+});
+
 function aiPlayMove() {
     // Checking for plays to make for immediate wins
     // Tile 1 Win Check
@@ -210,7 +214,3 @@ function onTileClick(tile) {
 
     player_dialogue.innerText = "Make your next move...";
 }
-
-tiles.forEach(function(clicked_tile) {
-    clicked_tile.addEventListener('click', onTileClick);
-});
